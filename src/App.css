@@ -1,38 +1,63 @@
-.App {
-  text-align: center;
+@keyframes fadeInOut {
+  0% {opacity: 0;}
+  10% {opacity: 0;}
+  50% {opacity: 1;}
+  90% {opacity: 0;}
+  100% {opacity: 0;}
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  5% { opacity: 0; }
+  100% { opacity: 1; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.txt {
+  font-family: "Clicker Script", cursive;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.logoTxt {
+  color: black;
+  font-family: "Clicker Script", cursive;
+  text-shadow: 1px 1px #fbc816;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  background-color: inherit;
 }
 
-.App-link {
-  color: #61dafb;
+.linkTxt {
+  color: black;
+  font-family: "Clicker Script", cursive;
+  text-shadow: 1.5px 2px #fbc816;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  background-color: inherit;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.linkTxt:active {
+  color: black;
+  opacity: 0.7;
+}
+
+.linkTxt:hover {
+  color: black;
+}
+
+.divider {
+  background-image: linear-gradient(#f7f7f7, #292b2c);
+  padding: 4px;
+}
+
+.dropdown-item:active {
+  background-color: #ffc107;
+}
+
+.loadFade {
+  animation: fadeIn 3s;
+}
+
+.caroFade {
+  animation: fadeInOut 7s;
 }
