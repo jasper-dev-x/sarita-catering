@@ -16,6 +16,17 @@
   font-family: "Clicker Script", cursive;
 }
 
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  color: black; 
+  text-decoration: none; 
+  cursor: pointer;  
+}
+
 .logoTxt {
   color: black;
   font-family: "Clicker Script", cursive;

@@ -21,10 +21,9 @@ export default function ServiceDetailsPage({ match }) {
                             <div className="carousel-inner">
 
                                 { service.imgList.map((item, key) => {
-                                    // eslint-disable-next-line eqeqeq
-                                    if (counter == 0) {
+                                    if (counter === 0) {
                                         return (
-                                            <div className="carousel-item d-flex active">
+                                            <div className="carousel-item d-flex active" key={ key }>
                                                 <img src={ service.imgList[counter++].src } className="d-block rounded w-100" alt="..." />
                                             </div>
                                         );

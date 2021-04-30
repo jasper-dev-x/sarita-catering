@@ -1,14 +1,14 @@
 import React from 'react';
-import NotFoundPage from '../NotFound';
+import { Link } from 'react-router-dom';
 
 export default function Access({ accessKeyCodeId }) {
-    const sessionId = sessionStorage.getItem('adminKeyCodeId');
-    if (!sessionId || sessionId !== accessKeyCodeId)
-        return <NotFoundPage />;
+
     return (
         <div className="d-flex flex-fill flex-column justify-content-around align-items-center loadFade">
-            <button className="btn btn-lg btn-warning">Menu</button>
-            <button className="btn btn-lg btn-dark">Services</button>
+            <Link to="/admin-Menu">
+                <button className="btn btn-lg btn-warning" onClick={ () => window.scrollTo(0, 0) }>Menu</button>
+            </Link>
+            <Link to="/admin-Services" className="btn btn-lg btn-dark">Services</Link>
         </div>
     );
 }

@@ -8,7 +8,7 @@ export default function MenuList({ menu, search, section }) {
     <div className="d-flex flex-column justify-content-center py-3">
       {filteredMenu.map((item, key) => (
         <div key={ key } className="d-flex flex-column align-items-center">
-          <span className="lead pe-none">{ item.name }</span>
+          <span className="lead flex-grow-1 pe-none">{ item.name }</span>
           <hr className="bg-secondary w-50"></hr>
         </div>
       )) }

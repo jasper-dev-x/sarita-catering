@@ -11,9 +11,11 @@ export default function AccessBtn({ login, accessKeyCodeId, setAccessKeyCodeId =
     if (login === '1234') {
         sessionStorage.setItem('adminKeyCodeId', accessKeyCodeId);
         return (
-            <Link to={ `/admin-AccessGranted` }>
-                <button id="adminBtnLogin" className="txt btn btn-lg btn-warning loadFade">Enter</button>
-            </Link>
+            <button id="adminBtnLogin" className="txt btn btn-lg btn-warning loadFade">
+                <Link to={ `/admin-AccessGranted` } >
+                    Enter
+                </Link>
+            </button>
         );
     }
     return <div />;

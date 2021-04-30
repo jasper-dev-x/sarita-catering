@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
@@ -9,18 +9,47 @@ import Menu from "./pages/menu";
 import About from "./pages/about";
 import Admin from "./pages/admin";
 import Testimonials from "./pages/testimonials";
-import MenuDetails from "./pages/menu/MenuItemDetails";
 import Service from "./pages/services";
 import NotFound from "./pages/NotFound";
 import Store from "./pages/store";
 import Book from "./pages/book";
 import ServiceDetails from "./pages/services/ServiceDetails";
 import Access from "./pages/admin/Access";
-import shortid from 'shortid';
+import AdminMenu from "./pages/admin/adminMenu";
+import AdminServices from "./pages/admin/adminServices";
+import { menuList } from './pages/menu/menu-content';
 
 function App() {
+  const [menu, setMenu] = useState([]);
   const [login, setLogin] = useState('');
-  const [accessKeyCodeId, setAccessKeyCodeId] = useState(shortid.generate());
+  const [accessKeyCodeId, setAccessKeyCodeId] = useState('');
+
+  // Limits Menu Fetches to 5/hr
+  useEffect(() => {
+    if (!localStorage.getItem("HOUR") || localStorage.getItem("HOUR") !== new Date().getHours().toString()) {
+      localStorage.setItem("HOUR", new Date().getHours());
+      localStorage.setItem("REFRESH", "0");
+    }
+    if (localStorage.getItem("REFRESH") !== "5") {
+      fetchMenu();
+      localStorage.setItem("REFRESH", parseInt(localStorage.getItem("REFRESH")) + 1);
+    }
+    if (localStorage.getItem("REFRESH") === "5" && localStorage.getItem("HOUR") === new Date().getHours().toString()) {
+      setMenu(menuList);
+      setTimeout(() => localStorage.clear(), 1_000); // Refresh Lock
+    }
+    console.log(localStorage.getItem("REFRESH"), localStorage.getItem("HOUR"));
+  }, []);
+
+  async function fetchMenu() {
+    try {
+      await fetch('https://us-east-1.aws.webhooks.mongodb-realm.com/api/client/v2.0/app/saritacatering-vglhw/service/menu/incoming_webhook/getMenu')
+        .then(res => res.json())
+        .then(setMenu);
+    } catch (err) {
+      console.error("ERROR FETCHING MENU: ", err);
+    };
+  }
 
   return (
     <BrowserRouter>
@@ -28,22 +57,59 @@ function App() {
         <NavBar />
         <div className="d-flex flex-fill flex-column" style={ { paddingTop: (window.innerHeight * .08) } }>
           <Switch>
+            {/* HOME */ }
             <Route path="/" component={ Home } exact />
+
+            {/* ADMIN */ }
             <Route path="/admin">
               <Admin login={ login } setLogin={ setLogin } accessKeyCodeId={ accessKeyCodeId } setAccessKeyCodeId={ setAccessKeyCodeId } />
             </Route>
             <Route path="/admin-AccessGranted">
-              <Access accessKeyCodeId={ accessKeyCodeId } />
+              { () => {
+                if (!sessionStorage.getItem('adminKeyCodeId'))
+                  return <NotFound />;
+                else
+                  return <Access />;
+              } }
             </Route>
+            <Route path="/admin-Menu">
+              { () => {
+                if (!sessionStorage.getItem('adminKeyCodeId'))
+                  return <NotFound />;
+                else
+                  return <AdminMenu menu={ menu } setMenu={ setMenu } />;
+              } }
+            </Route>
+            <Route path="/admin-Services">
+              { () => {
+                if (!sessionStorage.getItem('adminKeyCodeId'))
+                  return <NotFound />;
+                else
+                  return <AdminServices />;
+              } }
+            </Route>
+
+            {/* ABOUT */ }
             <Route path="/about" component={ About } />
-            <Route path="/menu" component={ Menu } />
-            <Route path="/menuItem/:name" component={ MenuDetails } />
-            <Route path="/store" component={ Store } />
+
+            {/* MENU */ }
+            <Route path="/menu">
+              <Menu menu={ menu } />
+            </Route>
+
+            {/* SERVICE */ }
             <Route path="/services" component={ Service } />
             <Route path="/service/:id" component={ ServiceDetails } />
-            <Route path="/events" component={ Events } />
+
+            {/* BOOK */ }
             <Route path="/book" component={ Book } />
+
+            {/* ----NOT IN SERVICE---- */ }
+            <Route path="/events" component={ Events } />
             <Route path="/testimonials" component={ Testimonials } />
+            <Route path="/store" component={ Store } />
+
+            {/* 404 */ }
             <Route component={ NotFound } />
           </Switch>
         </div>

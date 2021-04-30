@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import MenuSections from "./components/MenuSections";
 import MenuRadio from "./components/MenuRadio";
-import { menu } from "./menu-content";
 
-export default function MenuPage() {
-    const [search, setSearch] = useState("");
+export default function MenuPage({ menu }) {
+    const [search, setSearch] = useState('');
     const allMenuSections = ['appetizers', 'salads', 'dinners'];
     const [sections, setSections] = useState(allMenuSections);
-    const [menuRadio, setMenuRadio] = useState("");
+    const [menuRadio, setMenuRadio] = useState('');
 
     useEffect(() => {
     }, [menuRadio]);

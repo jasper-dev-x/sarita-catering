@@ -22,7 +22,6 @@ export default function Admin({ login, setLogin = x => x, accessKeyCodeId, setAc
 
     return (
         <div className="d-flex flex-fill flex-column justify-content-center align-items-center loadFade">
-            <h1 className="txt display-2">Admin</h1>
             <div className="form-floating my-3" style={ { width: 100 } }>
                 <input id="adminLogin" type="number" className="form-control" placeholder="####" value={ login } onChange={ (x) => {
                     if (login.length < 4)
