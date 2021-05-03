@@ -1,39 +1,29 @@
-import catering1 from './catering1.jpg';
-import catering2 from './catering2.jpg';
-import catering3 from './catering3.jpg';
-import catering4 from './catering4.jpg';
-import catering5 from './catering5.jpg';
-import catering6 from './catering6.jpg';
-import catering7 from './catering7.jpg';
-import catering8 from './catering8.jpg';
-import catering9 from './catering9.jpg';
-
 export const cateringList = [
     {
-        src: catering1
+        src: "https://i.imgur.com/091DV3S.jpg"
     },
     {
-        src: catering2
+        src: "https://i.imgur.com/lvarTHZ.jpg"
     },
     {
-        src: catering3
+        src: "https://i.imgur.com/kpCWOFz.jpg"
     },
     {
-        src: catering4
+        src: "https://i.imgur.com/eZTqeoA.jpg"
     },
     {
-        src: catering5
+        src: "https://i.imgur.com/cT8QBVN.png"
     },
     {
-        src: catering6
+        src: "https://i.imgur.com/wgZ6SG5.png"
     },
     {
-        src: catering7
+        src: "https://i.imgur.com/qTU7O40.png"
     },
     {
-        src: catering8
+        src: "https://i.imgur.com/VRWoKsh.png"
     },
     {
-        src: catering9
+        src: "https://i.imgur.com/WED1dAu.jpg"
     },
 ];

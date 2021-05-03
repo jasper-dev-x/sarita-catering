@@ -14,9 +14,7 @@ import NotFound from "./pages/NotFound";
 import Store from "./pages/store";
 import Book from "./pages/book";
 import ServiceDetails from "./pages/services/ServiceDetails";
-import Access from "./pages/admin/Access";
 import AdminMenu from "./pages/admin/adminMenu";
-import AdminServices from "./pages/admin/adminServices";
 import { menuList } from './pages/menu/menu-content';
 
 function App() {
@@ -38,7 +36,6 @@ function App() {
       setMenu(menuList);
       setTimeout(() => localStorage.clear(), 1_000); // Refresh Lock
     }
-    console.log(localStorage.getItem("REFRESH"), localStorage.getItem("HOUR"));
   }, []);
 
   async function fetchMenu() {
@@ -64,28 +61,12 @@ function App() {
             <Route path="/admin">
               <Admin login={ login } setLogin={ setLogin } accessKeyCodeId={ accessKeyCodeId } setAccessKeyCodeId={ setAccessKeyCodeId } />
             </Route>
-            <Route path="/admin-AccessGranted">
-              { () => {
-                if (!sessionStorage.getItem('adminKeyCodeId'))
-                  return <NotFound />;
-                else
-                  return <Access />;
-              } }
-            </Route>
-            <Route path="/admin-Menu">
+            <Route path="/admin-menu">
               { () => {
                 if (!sessionStorage.getItem('adminKeyCodeId'))
                   return <NotFound />;
                 else
                   return <AdminMenu menu={ menu } setMenu={ setMenu } />;
-              } }
-            </Route>
-            <Route path="/admin-Services">
-              { () => {
-                if (!sessionStorage.getItem('adminKeyCodeId'))
-                  return <NotFound />;
-                else
-                  return <AdminServices />;
               } }
             </Route>
 

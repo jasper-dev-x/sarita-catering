@@ -4,7 +4,7 @@ import { services } from './service-content';
 import { Link } from "react-router-dom";
 import CaroItem from './components/CaroItem';
 
-export default function ServiceDetailsPage({ match }) {
+export default function ServiceDetails({ match }) {
     const id = match.params.id;
     // eslint-disable-next-line eqeqeq
     const service = services.find((x) => x.id == id);
@@ -19,7 +19,6 @@ export default function ServiceDetailsPage({ match }) {
                     <div className="col-10 col-sm-8 col-lg-6">
                         <div id={ `carousel${id}` } className="carousel slide carousel-fade loadFade" data-bs-ride="carousel" data-bs-interval={ timer } >
                             <div className="carousel-inner">
-
                                 { service.imgList.map((item, key) => {
                                     if (counter === 0) {
                                         return (
@@ -42,14 +41,26 @@ export default function ServiceDetailsPage({ match }) {
                         </div>
                     </div>
                     <div className="col-lg-6">
-                        <h1 className="display-5 txt text-center fw-bold lh-1 mb-3">{ service.name }</h1>
-                        <p className="lead">
-                            Aliquam et elit tellus. Sed purus nisl, tempus nec mollis sit amet, iaculis ac erat.
-                            Maecenas sit amet euismod arcu, a ultrices risus. Nam nunc metus, sollicitudin at felis id,
-                            euismod pharetra nulla. Phasellus pretium, magna et convallis finibus, lacus lectus finibus velit,
-                            vel congue nibh lectus nec mi. Nunc vel nibh risus. Nulla eros mi, pretium nec felis a, hendrerit bibendum ipsum.
-                            Nunc vel condimentum elit.
-                        </p>
+                        <h1 className="display-3 txt text-center fw-bold lh-1 mb-3">{ service.name }</h1>
+                        <div className="row">
+                            <ul className="list-group lead">
+                                { service.info.map((item, key) => {
+                                    if (item.charAt(0) === '*')
+                                        return (
+                                            <li className="list-group-item bg-light text-muted" key={ key }><small>{ item }</small></li>
+                                        );
+
+                                    return (
+                                        <li className="list-group-item bg-light mt-4" key={ key }>{ item }</li>
+                                    );
+                                }) }
+                            </ul>
+                        </div>
+                        <div className="row d-flex justify-content-center">
+                            <p className="text-center text-danger my-3 w-75">
+                                ALL CANCELLATIONS MUST BE MADE 48 HOURS BEFORE DAY OF EVENT
+                            </p>
+                        </div>
                         <div className="row">
                             <div className="col-6 btn">
                                 <Link to={ `/book` } className="btn btn-warning d-flex flex-fill justify-content-center px-2 p-2" onClick={ () => window.scrollTo(0, 0) }>

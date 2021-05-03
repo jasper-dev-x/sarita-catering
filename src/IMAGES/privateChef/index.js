@@ -1,23 +1,17 @@
-import pc1 from './pc1.jpg';
-import pc2 from './pc2.jpg';
-import pc3 from './pc3.jpg';
-import pc4 from './pc4.jpg';
-import pc5 from './pc5.jpg';
-
 export const privateChefList = [
     {
-        src: pc1
+        src: "https://i.imgur.com/FmilZkt.jpg"
     },
     {
-        src: pc2
+        src: "https://i.imgur.com/lzYkatO.jpg"
     },
     {
-        src: pc3
+        src: "https://i.imgur.com/6Qv70WT.jpg"
     },
     {
-        src: pc4
+        src: "https://i.imgur.com/I5pyJuF.jpg"
     },
     {
-        src: pc5
+        src: "https://i.imgur.com/vK50uq9.jpg"
     }
 ];

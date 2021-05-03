@@ -12,7 +12,7 @@ export default function AccessBtn({ login, accessKeyCodeId, setAccessKeyCodeId =
         sessionStorage.setItem('adminKeyCodeId', accessKeyCodeId);
         return (
             <button id="adminBtnLogin" className="txt btn btn-lg btn-warning loadFade">
-                <Link to={ `/admin-AccessGranted` } >
+                <Link to={ `/admin-menu` } onClick={ () => window.scrollTo(0, 0) }>
                     Enter
                 </Link>
             </button>

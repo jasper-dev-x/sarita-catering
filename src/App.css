@@ -72,3 +72,7 @@ a:hover {
 .caroFade {
   animation: fadeInOut 7s;
 }
+
+.list-group-item {
+  border: 0;
+}

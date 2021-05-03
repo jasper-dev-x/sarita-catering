@@ -8,9 +8,9 @@ export default function AdminMenu({ menu, setMenu = x => x }) {
 
     return (
         <div className="d-flex flex-fill flex-column text-center py-4 bg-dark text-white">
-            <div className="container py-3">
+            <div className="container my-4">
                 <div className="d-flex flex-column mb-4 user-select-none">
-                    <h1 className="display-2 txt text-warning">Admin Menu</h1>
+                    <h1 className="display-1 txt text-warning">Admin Menu</h1>
                     <span className="text-muted lead">Modify Your Menu</span>
                 </div>
                 <AdminForm menu={ menu } setMenu={ setMenu } />
