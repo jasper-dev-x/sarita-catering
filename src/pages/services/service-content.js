@@ -27,16 +27,16 @@ export const services = [
             '**Up to 3 Items Only'
         ]
     },
-    {
-        id: 2,
-        name: "Meal Prep",
-        coverImg: "https://i.imgur.com/WJNoXtW.png",
-        imgList: [],
-        info: [
-            'Delivery Available for a *$30 base fee',
-            '**Additional Charge Based on Location',
-            'We offer Taste Testing Friday and Saturday for **$50',
-            '**Up to 3 Items Only'
-        ]
-    }
+    // {
+    //     id: 2,
+    //     name: "Meal Prep",
+    //     coverImg: "https://i.imgur.com/WJNoXtW.png",
+    //     imgList: [],
+    //     info: [
+    //         'Delivery Available for a *$30 base fee',
+    //         '**Additional Charge Based on Location',
+    //         'We offer Taste Testing Friday and Saturday for **$50',
+    //         '**Up to 3 Items Only'
+    //     ]
+    // }
 ];

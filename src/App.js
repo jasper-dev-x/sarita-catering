@@ -4,14 +4,11 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import Home from "./pages";
-import Events from "./pages/events";
 import Menu from "./pages/menu";
 import About from "./pages/about";
 import Admin from "./pages/admin";
-import Testimonials from "./pages/testimonials";
 import Service from "./pages/services";
 import NotFound from "./pages/NotFound";
-import Store from "./pages/store";
 import Book from "./pages/book";
 import ServiceDetails from "./pages/services/ServiceDetails";
 import AdminMenu from "./pages/admin/adminMenu";
@@ -34,7 +31,7 @@ function App() {
     }
     if (localStorage.getItem("REFRESH") === "5" && localStorage.getItem("HOUR") === new Date().getHours().toString()) {
       setMenu(menuList);
-      setTimeout(() => localStorage.clear(), 1_000); // Refresh Lock
+      setTimeout(() => localStorage.clear(), 1_000); // Refresh Lock *RESET TO HOUR, CURRENTLY 1 SECOND !!!*
     }
   }, []);
 
@@ -54,44 +51,39 @@ function App() {
         <NavBar />
         <div className="d-flex flex-fill flex-column" style={ { paddingTop: (window.innerHeight * .08) } }>
           <Switch>
-            {/* HOME */ }
-            <Route path="/" component={ Home } exact />
+              {/* HOME */ }
+              <Route path="/" component={ Home } exact />
 
-            {/* ADMIN */ }
-            <Route path="/admin">
-              <Admin login={ login } setLogin={ setLogin } accessKeyCodeId={ accessKeyCodeId } setAccessKeyCodeId={ setAccessKeyCodeId } />
-            </Route>
-            <Route path="/admin-menu">
-              { () => {
-                if (!sessionStorage.getItem('adminKeyCodeId'))
-                  return <NotFound />;
-                else
-                  return <AdminMenu menu={ menu } setMenu={ setMenu } />;
-              } }
-            </Route>
+              {/* ADMIN */ }
+              <Route path="/admin">
+                <Admin login={ login } setLogin={ setLogin } accessKeyCodeId={ accessKeyCodeId } setAccessKeyCodeId={ setAccessKeyCodeId } />
+              </Route>
+              <Route path="/admin-menu">
+                { () => {
+                  if (!sessionStorage.getItem('adminKeyCodeId'))
+                    return <NotFound />;
+                  else
+                    return <AdminMenu menu={ menu } setMenu={ setMenu } />;
+                } }
+              </Route>
 
-            {/* ABOUT */ }
-            <Route path="/about" component={ About } />
+              {/* ABOUT */ }
+              <Route path="/about" component={ About } />
 
-            {/* MENU */ }
-            <Route path="/menu">
-              <Menu menu={ menu } />
-            </Route>
+              {/* MENU */ }
+              <Route path="/menu">
+                <Menu menu={ menu } />
+              </Route>
 
-            {/* SERVICE */ }
-            <Route path="/services" component={ Service } />
-            <Route path="/service/:id" component={ ServiceDetails } />
+              {/* SERVICE */ }
+              <Route path="/services" component={ Service } />
+              <Route path="/service/:id" component={ ServiceDetails } />
 
-            {/* BOOK */ }
-            <Route path="/book" component={ Book } />
+              {/* BOOK */ }
+              <Route path="/book" component={ Book } />
 
-            {/* ----NOT IN SERVICE---- */ }
-            <Route path="/events" component={ Events } />
-            <Route path="/testimonials" component={ Testimonials } />
-            <Route path="/store" component={ Store } />
-
-            {/* 404 */ }
-            <Route component={ NotFound } />
+              {/* 404 */ }
+              <Route component={ NotFound } />
           </Switch>
         </div>
         <Footer />

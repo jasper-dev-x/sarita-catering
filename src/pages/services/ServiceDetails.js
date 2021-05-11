@@ -69,7 +69,7 @@ export default function ServiceDetails({ match }) {
                             </div>
                             <div className="col-6 btn">
                                 <Link to={ `/services` } className="btn btn-dark d-flex flex-fill justify-content-center px-2 p-2" onClick={ () => window.scrollTo(0, 0) }>
-                                    <span className="lead">Other Services</span>
+                                    <span className="lead">Back</span>
                                 </Link>
                             </div>
                         </div>

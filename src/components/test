@@ -1,0 +1,16 @@
+        <div className="dropdown">
+          <button className="btn btn-outline-light" type="button" id="navbarMenu" data-bs-toggle="dropdown" aria-expanded="false">
+            <span className="navbar-toggler-icon" />
+          </button>
+          <ul id="navMenu" className="dropdown-menu border-light bg-light text-center mt-2" style={ { width: window.innerWidth + 1, height: window.innerHeight } } aria-labelledby="navbarMenu">
+            <li><hr className="dropdown-divider bg-warning"></hr></li>
+            <NavLink name="About" toLink="/about" />
+            <NavLink name="Menu" toLink="/menu" />
+            {/* <NavLink name="Store" toLink="/store" /> */ }
+            <NavLink name="Services" toLink="/services" />
+            {/* <NavLink name="Events" toLink="/events" /> */ }
+            <NavLink name="Book" toLink="/book" />
+            {/* <NavLink name="Testimonials" toLink="/testimonials"/> */ }
+          </ul>
+        </div>
+        
