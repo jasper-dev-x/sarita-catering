@@ -5,12 +5,12 @@ export default function AboutPage() {
     return (
         <div className="d-flex flex-fill flex-column justify-content-center px-3 my-3 pb-5 text-center user-select-none">
                 <div className="card-body d-flex flex-column align-items-center">
-                    <h5 className="card-title text-center mb-3" >
+                    <h5 className="card-title text-center my-3" >
                         <span className="display-4 txt fw-bold">Satisfying One Taste Bud at a Time . . .</span>
                     </h5>
                     <hr className="w-75"></hr>
                     <div className="card-text d-flex flex-column align-items-center lead">
-                        <div className="container my-5 py-md-5" >
+                        <div className="container my-5 pb-md-5 pt-md-4" >
                             Chef Sarita is the founder and owner of <span className="txt">Sarita Catering</span> LLC.
                         The kitchen is the place where shes gets to explore and bring to life amazing dishes for any
                         events or themes, all while enjoying every moment of it. Chef Sarita always had a passion for
@@ -19,7 +19,7 @@ export default function AboutPage() {
                         <hr className="bg-warning w-50 pb-1 rounded"></hr>
                         <div className="container my-5 py-md-5" >
                             Dishes like Rellenos de Papa, Sorullos, Limber de Coco and Arroz con Dulce. Her passion for the craft
-                        has only grown over the years.She decided to turn her passion into a career and <span className="txt"> Sarita Catering </span> was
+                        has only grown over the years. She decided to turn her passion into a career and <span className="txt"> Sarita Catering </span> was
                         born. After some time cooking from her own kitchen she realized it was time to take a leap of faith and
                         take <span className="txt">Sarita Catering</span> to the next level. She attended and graduated from
                         <span className="fst-italic"> International Culinary Center </span> with a degree in
